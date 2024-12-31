@@ -70,15 +70,45 @@ func kthDistinct(arr []string, k int) string {
 	return distinctStrings[k-1]
 }
 
-func reverseString(s []byte) {
+func reverseString(s string) bool {
 	left, right := 0, len(s)-1
 
-	// Tukar elemen dari kiri ke kanan sampai mencapai tengah
 	for left < right {
-		s[left], s[right] = s[right], s[left]
+		if s[left] != s[right] {
+			return false
+		}
 		left++
 		right--
 	}
+	return true
+}
+
+func factorial(num int) int {
+	if num == 0 {
+		return 1
+	}
+	// result:=1
+	// for i := num; i >= 1; i--{
+	//   result *= i
+	// }
+	// return result
+
+	return num * factorial(num-1)
+
+}
+
+func duplicateString(s string) string {
+	check := make(map[byte]bool)
+	length := len(s) - 1
+	var result string
+	for i := 0; i <= length; i++ {
+		if !check[s[i]] {
+			check[s[i]] = true
+			result += string(s[i])
+		}
+
+	}
+	return result
 }
 
 func twoSum(nums []int, target int) []int {
